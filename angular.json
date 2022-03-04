@@ -1,7 +1,150 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "19d5769d-9f03-4274-adf1-a45a6e56c4f0"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "@anedomansky/ngx-toast": {
+      "projectType": "library",
+      "root": "projects/anedomansky/ngx-toast",
+      "sourceRoot": "projects/anedomansky/ngx-toast/src",
+      "prefix": "lib",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/anedomansky/ngx-toast/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/anedomansky/ngx-toast/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/anedomansky/ngx-toast/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/anedomansky/ngx-toast/src/test.ts",
+            "tsConfig": "projects/anedomansky/ngx-toast/tsconfig.spec.json",
+            "karmaConfig": "projects/anedomansky/ngx-toast/karma.conf.js"
+          }
+        }
+      }
+    },
+    "ngx-toast-app": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "projects/ngx-toast-app",
+      "sourceRoot": "projects/ngx-toast-app/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/ngx-toast-app",
+            "index": "projects/ngx-toast-app/src/index.html",
+            "main": "projects/ngx-toast-app/src/main.ts",
+            "polyfills": "projects/ngx-toast-app/src/polyfills.ts",
+            "tsConfig": "projects/ngx-toast-app/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/ngx-toast-app/src/favicon.ico",
+              "projects/ngx-toast-app/src/assets"
+            ],
+            "styles": [
+              "projects/ngx-toast-app/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/ngx-toast-app/src/environments/environment.ts",
+                  "with": "projects/ngx-toast-app/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "ngx-toast-app:build:production"
+            },
+            "development": {
+              "browserTarget": "ngx-toast-app:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "ngx-toast-app:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-toast-app/src/test.ts",
+            "polyfills": "projects/ngx-toast-app/src/polyfills.ts",
+            "tsConfig": "projects/ngx-toast-app/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-toast-app/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/ngx-toast-app/src/favicon.ico",
+              "projects/ngx-toast-app/src/assets"
+            ],
+            "styles": [
+              "projects/ngx-toast-app/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "@anedomansky/ngx-toast"
 }

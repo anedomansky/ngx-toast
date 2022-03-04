@@ -2,6 +2,12 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "paths": {
+      "@anedomansky/ngx-toast": [
+        "dist/anedomansky/ngx-toast/anedomansky-ngx-toast",
+        "dist/anedomansky/ngx-toast"
+      ]
+    },
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
