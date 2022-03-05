@@ -1,0 +1,24 @@
+.btn-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr;
+    gap: 1rem;
+}
+
+.btn {
+    &--success {
+        background-color: lightgreen;
+    }
+
+    &--info {
+        background-color: lightblue;
+    }
+
+    &--warning {
+        background-color: yellow;
+    }
+
+    &--error {
+        background-color: red;
+    }
+}

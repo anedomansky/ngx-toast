@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Position } from '@anedomansky/ngx-toast';
 
 @Component({
   selector: 'app-root',
@@ -6,4 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  additionalClasses = 'test';
+  position = Position.TOP_LEFT;
 }
