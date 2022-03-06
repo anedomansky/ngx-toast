@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
-import { Position } from '@anedomansky/ngx-toast';
+import { Position, Severity } from '@anedomansky/ngx-toast';
+
+interface Toast {
+  position: Position;
+  severity: Severity;
+  additonalClasses?: string;
+}
 
 @Component({
   selector: 'app-root',
@@ -9,4 +15,6 @@ import { Position } from '@anedomansky/ngx-toast';
 export class AppComponent {
   additionalClasses = 'test';
   position = Position.TOP_LEFT;
+  severity = Severity.SUCCESS;
+  toasts: Toast[] = [];
 }

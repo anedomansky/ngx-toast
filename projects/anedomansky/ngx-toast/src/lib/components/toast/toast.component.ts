@@ -7,7 +7,7 @@ export enum Position {
   BOTTOM_LEFT = 'bottom-left',
 }
 
-enum Severity {
+export enum Severity {
   SUCCESS = 'success',
   INFO = 'info',
   WARNING = 'warning',
@@ -29,7 +29,7 @@ export class ToastComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.classes = `${this.classes}${this.position} ${this.additionalClassNames}`;
+    this.classes = `${this.classes}${this.position} ${this.severity} ${this.additionalClassNames}`;
   }
 
 }
