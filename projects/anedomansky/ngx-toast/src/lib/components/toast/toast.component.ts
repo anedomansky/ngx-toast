@@ -1,18 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-
-export enum Position {
-  TOP_RIGHT = 'top-right',
-  TOP_LEFT = 'top-left',
-  BOTTOM_RIGHT = 'bottom-right',
-  BOTTOM_LEFT = 'bottom-left',
-}
-
-export enum Severity {
-  SUCCESS = 'success',
-  INFO = 'info',
-  WARNING = 'warning',
-  ERROR = 'error',
-}
+import { Position } from '../../enums/Position';
+import { Severity } from '../../enums/Severity';
 
 @Component({
   selector: 'ngx-toast',
