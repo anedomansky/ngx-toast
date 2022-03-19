@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { ToastComponent } from './components/toast/toast.component';
 import { ToastContainerComponent } from './components/toast-container/toast-container.component';
-import { ToastContainerDirective } from './directives/toast-container.directive';
+import { ToastDirective } from './directives/toast.directive';
 
 
 
@@ -9,7 +9,7 @@ import { ToastContainerDirective } from './directives/toast-container.directive'
   declarations: [
     ToastComponent,
     ToastContainerComponent,
-    ToastContainerDirective,
+    ToastDirective,
   ],
   imports: [
   ],
