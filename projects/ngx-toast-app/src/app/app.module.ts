@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    NgxToastModule,
+    NgxToastModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

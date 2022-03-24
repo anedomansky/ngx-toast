@@ -14,20 +14,23 @@ export class ToastService {
   constructor(
     @Inject(TOAST_CONFIG) toastToken: ToastConfigToken,
   ) {
-    this.toastConfig = { ...toastToken.config };
+    this.toastConfig = {
+      ...toastToken.config,
+      ...toastToken.override,
+    };
   }
 
-  private createToast(toastDirective: ToastDirective) {
+  private createToast(title: string, message: string, override: Partial<ToastConfig> ,toastDirective: ToastDirective) {
     const viewContainerRef = toastDirective.viewContainerRef;
     const componentRef = viewContainerRef.createComponent(ToastComponent);
     // TODO: use componentRef.instance.XYZ to initialize component's props
     // apply this.toastConfig to the props
   }
 
-  private applyConfig(individualConfig: Partial<ToastConfig>) {
+  private applyConfig(override: Partial<ToastConfig>) {
     this.toastConfig = {
       ...this.toastConfig,
-      ...individualConfig,
+      ...override,
     };
   }
 
