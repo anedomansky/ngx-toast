@@ -1,15 +1,20 @@
-import { Inject, Injectable } from '@angular/core';
+import { ComponentRef, Inject, Injectable } from '@angular/core';
+import { ToastComponent } from '../../components/toast/toast.component';
 import { ToastConfig, ToastConfigToken, TOAST_CONFIG } from '../../configs/toast.config';
 import { ToastDirective } from '../../directives/toast.directive';
-import { Position } from '../../enums/Position';
-import { Severity } from '../../enums/Severity';
-import { ToastComponent } from '../../components/toast/toast.component';
+
+interface Toast {
+  index: number;
+  component: ComponentRef<ToastComponent>;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class ToastService {
   toastConfig: ToastConfig;
+  toasts: Toast[] = [];
+  private index = 0;
 
   constructor(
     @Inject(TOAST_CONFIG) toastToken: ToastConfigToken,
@@ -20,11 +25,17 @@ export class ToastService {
     };
   }
 
-  private createToast(title: string, message: string, override: Partial<ToastConfig> ,toastDirective: ToastDirective) {
+  private add(component: ComponentRef<ToastComponent>) {
+    this.toasts.push({ index: this.index, component });
+    this.index += 1;
+  }
+
+  private createToast(title: string, message: string, toastDirective: ToastDirective) {
     const viewContainerRef = toastDirective.viewContainerRef;
     const componentRef = viewContainerRef.createComponent(ToastComponent);
     // TODO: use componentRef.instance.XYZ to initialize component's props
     // apply this.toastConfig to the props
+    this.add(componentRef);
   }
 
   private applyConfig(override: Partial<ToastConfig>) {
@@ -34,36 +45,20 @@ export class ToastService {
     };
   }
 
-  private createInfoToast(config: ToastConfig, toastDirective: ToastDirective) {
-    this.createToast(toastDirective);
+  create(title: string, message: string, toastDirective: ToastDirective, override: Partial<ToastConfig> = {}) {
+    this.applyConfig(override);
+    this.createToast(title, message, toastDirective);
   }
 
-  private createSuccessToast(config: ToastConfig, toastDirective: ToastDirective) {
-    this.createToast(toastDirective);
-  }
-
-  private createWarningToast(config: ToastConfig, toastDirective: ToastDirective) {
-    this.createToast(toastDirective);
-  }
-
-  private createErrorToast(config: ToastConfig, toastDirective: ToastDirective) {
-    this.createToast(toastDirective);
-  }
-
-  create(config: ToastConfig, toastDirective: ToastDirective) {
-    switch (config.severity) {
-      case Severity.SUCCESS:
-        this.createSuccessToast(config, toastDirective);
-        break;
-      case Severity.WARNING:
-        this.createWarningToast(config, toastDirective);
-        break;
-      case Severity.ERROR:
-        this.createErrorToast(config, toastDirective);
-        break;
-      default:
-        this.createInfoToast(config, toastDirective);
-        break;
+  remove(toastIndex: number) {
+    if (this.toasts[toastIndex]) {
+      this.toasts.splice(toastIndex, 1);
     }
+  }
+
+  clear() {
+    this.toasts.forEach((toast) => toast.component.destroy());
+    this.toasts = [];
+    this.index = 0;
   }
 }
