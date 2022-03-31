@@ -14,6 +14,7 @@ import { DefaultToastConfig, ToastConfig, TOAST_CONFIG } from './configs/toast.c
   ],
   exports: [
     ToastComponent,
+    ToastDirective,
   ]
 })
 export class NgxToastModule {
@@ -29,7 +30,6 @@ export class NgxToastModule {
   }
 
   /**
-   * Needed in order to share the config across all modules.
    * The user can pass an initial override that will be applied to the existing ToastComponent configuration.
    * 
    * @param override 
