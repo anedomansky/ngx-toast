@@ -14,6 +14,7 @@ import { DefaultToastConfig, ToastConfig, TOAST_CONFIG } from './configs/toast.c
   ],
   exports: [
     ToastComponent,
+    ToastContainerComponent,
     ToastDirective,
   ]
 })

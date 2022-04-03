@@ -5,8 +5,8 @@
     <button class="btn btn--error">Error</button>
 </section>
 <!-- TODO: use ToastContainerComponent instead of manually creating a section + class -->
-<section class="toast-container">
+<ngx-toast-container>
     <ng-template toast></ng-template>
     <!-- ngFor list of toasts; on btn click generate new toast and prepend / append it to the list -->
     <!-- <ngx-toast [additionalClassNames]="additionalClasses" [position]="position" [severity]="severity"></ngx-toast> -->
-</section>
+</ngx-toast-container>
