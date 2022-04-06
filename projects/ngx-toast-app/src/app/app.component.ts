@@ -26,8 +26,23 @@ export class AppComponent implements OnInit {
     console.log('init');
   }
 
-  createToast() {
+  createSuccessToast() {
     console.log(this.toast);
-    this.toastService.create("Title", "Message text.", this.toast);
+    this.toastService.create("Title", "Message text.", this.toast, { severity: Severity.SUCCESS });
+  }
+
+  createInfoToast() {
+    console.log(this.toast);
+    this.toastService.create("Title", "Message text.", this.toast, { severity: Severity.INFO });
+  }
+
+  createWarningToast() {
+    console.log(this.toast);
+    this.toastService.create("Title", "Message text.", this.toast, { severity: Severity.WARNING });
+  }
+
+  createErrorToast() {
+    console.log(this.toast);
+    this.toastService.create("Title", "Message text.", this.toast, { severity: Severity.ERROR });
   }
 }

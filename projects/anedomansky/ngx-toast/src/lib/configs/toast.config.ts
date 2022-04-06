@@ -1,10 +1,8 @@
 import { InjectionToken } from '@angular/core';
-import { Position } from '../enums/Position';
 import { Severity } from '../enums/Severity';
 
 export interface ToastConfig {
     severity?: Severity;
-    position?: Position;
 }
 
 export interface ToastConfigToken {
@@ -14,7 +12,6 @@ export interface ToastConfigToken {
 
 export const DefaultToastConfig: ToastConfig = {
     severity: Severity.INFO,
-    position: Position.TOP_LEFT,
 };
 
 /**

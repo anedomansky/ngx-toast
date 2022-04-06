@@ -34,7 +34,6 @@ export class ToastService {
     const viewContainerRef = toastDirective.viewContainerRef;
     const componentRef = viewContainerRef.createComponent(ToastComponent);
     // TODO: use componentRef.instance.XYZ to initialize component's props
-    componentRef.instance.position = this.toastConfig.position;
     componentRef.instance.severity = this.toastConfig.severity;
     // apply this.toastConfig to the props
     this.add(componentRef);

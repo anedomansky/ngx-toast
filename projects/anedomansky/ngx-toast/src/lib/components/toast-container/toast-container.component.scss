@@ -1,0 +1,23 @@
+.toast-container {
+  position: absolute;
+
+  &--top-right {
+    top: 0.5rem;
+    right: 0.5rem;
+  }
+
+  &--top-left {
+      top: 0.5rem;
+      left: 0.5rem;
+  }
+
+  &--bottom-right {
+      bottom: 0.5rem;
+      right: 0.5rem;
+  }
+
+  &--bottom-left {
+      bottom: 0.5rem;
+      left: 0.5rem;
+  }
+}
