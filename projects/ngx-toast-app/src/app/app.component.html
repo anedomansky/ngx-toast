@@ -10,3 +10,10 @@
     <!-- ngFor list of toasts; on btn click generate new toast and prepend / append it to the list -->
     <!-- <ngx-toast [additionalClassNames]="additionalClasses" [position]="position" [severity]="severity"></ngx-toast> -->
 </ngx-toast-container>
+<nav>
+    <ul>
+        <li><a routerLink="/first-toast-test" routerLinkActive="active">First Toast Test (top-right)</a></li>
+        <li><a routerLink="/second-toast-test" routerLinkActive="active">Second Toast Test (bottom-right)</a></li>
+    </ul>
+</nav>
+<router-outlet></router-outlet>

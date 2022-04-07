@@ -20,17 +20,6 @@ import { DefaultToastConfig, ToastConfig, TOAST_CONFIG } from './configs/toast.c
 })
 export class NgxToastModule {
   /**
-   * Ensures that the module is only loaded once.
-   * 
-   * @param parentModule 
-   */
-  constructor(@Optional() @SkipSelf() parentModule: NgxToastModule) {
-    if (parentModule) {
-      throw new Error('NgxToastModule is already loaded. Please add it only once.');
-    }
-  }
-
-  /**
    * The user can pass an initial override that will be applied to the existing ToastComponent configuration.
    * 
    * @param override 

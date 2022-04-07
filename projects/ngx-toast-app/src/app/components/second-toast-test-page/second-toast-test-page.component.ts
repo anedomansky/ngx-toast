@@ -1,5 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
 import { Position, Severity, ToastDirective, ToastService } from '@anedomansky/ngx-toast';
+import { Component, ViewChild } from '@angular/core';
 
 interface Toast {
   severity: Severity;
@@ -7,13 +7,13 @@ interface Toast {
 }
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'app-second-toast-test-page',
+  templateUrl: './second-toast-test-page.component.html',
+  styleUrls: ['./second-toast-test-page.component.scss']
 })
-export class AppComponent {
+export class SecondToastTestPageComponent {
   additionalClasses = 'test';
-  position = Position.TOP_LEFT;
+  position = Position.BOTTOM_RIGHT;
   severity = Severity.SUCCESS;
   toasts: Toast[] = [];
 
