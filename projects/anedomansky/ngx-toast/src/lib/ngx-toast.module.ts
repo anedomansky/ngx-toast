@@ -3,6 +3,7 @@ import { ToastComponent } from './components/toast/toast.component';
 import { ToastContainerComponent } from './components/toast-container/toast-container.component';
 import { ToastDirective } from './directives/toast.directive';
 import { DefaultToastConfig, ToastConfig, TOAST_CONFIG } from './configs/toast.config';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -11,6 +12,7 @@ import { DefaultToastConfig, ToastConfig, TOAST_CONFIG } from './configs/toast.c
     ToastDirective,
   ],
   imports: [
+    CommonModule,
   ],
   exports: [
     ToastComponent,

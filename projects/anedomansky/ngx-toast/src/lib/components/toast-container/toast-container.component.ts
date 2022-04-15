@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Position } from '../../enums/Position';
 
 @Component({
@@ -6,15 +6,10 @@ import { Position } from '../../enums/Position';
   templateUrl: './toast-container.component.html',
   styleUrls: ['./toast-container.component.scss']
 })
-export class ToastContainerComponent implements OnInit {
-  @Input() position?: Position;
+export class ToastContainerComponent {
+  @Input() position = Position.TOP_LEFT;
 
-  classes = 'toast-container toast-container--';
-
-  constructor() { }
-
-  ngOnInit(): void {
-    this.classes = `${this.classes}${this.position}`;
+  get classes(): string[] {
+    return ['toast-container', `toast-container--${this.position}`];
   }
-
 }
