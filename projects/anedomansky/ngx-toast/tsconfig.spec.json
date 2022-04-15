@@ -4,14 +4,15 @@
   "compilerOptions": {
     "outDir": "../../../out-tsc/spec",
     "types": [
-      "jasmine"
-    ]
+      "jest",
+      "node"
+    ],
+    "emitDecoratorMetadata": true
   },
   "files": [
-    "src/test.ts"
   ],
   "include": [
-    "**/*.spec.ts",
-    "**/*.d.ts"
+    "src/**/*.spec.ts",
+    "src/**/*.d.ts"
   ]
 }
