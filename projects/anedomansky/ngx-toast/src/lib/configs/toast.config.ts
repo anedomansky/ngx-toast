@@ -2,7 +2,7 @@ import { InjectionToken } from '@angular/core';
 import { Severity } from '../enums/Severity';
 
 export interface ToastConfig {
-    severity?: Severity;
+    severity: Severity;
 }
 
 export interface ToastConfigToken {

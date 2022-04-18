@@ -1,20 +1,24 @@
-import { render } from '@testing-library/angular';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ToastContainerComponent } from './toast-container.component';
 
 describe('ToastContainerComponent', () => {
-  let componentContainer: Element;
-  let changeFunction: (properties: Partial<ToastContainerComponent>) => void;
+  let component: ToastContainerComponent;
+  let fixture: ComponentFixture<ToastContainerComponent>;
 
   beforeEach(async () => {
-    const { container, change } = await render(ToastContainerComponent);
-
-    componentContainer = container;
-    changeFunction = change;
+    await TestBed.configureTestingModule({
+      declarations: [ ToastContainerComponent ]
+    })
+    .compileComponents();
   });
 
-  it('should render toast-container by default', () => {
-    const container = componentContainer.querySelector('.toast-container');
+  beforeEach(() => {
+    fixture = TestBed.createComponent(ToastContainerComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
-    expect(container).toBeVisible();
+  it('should create', () => {
+    expect(component).toBeTruthy();
   });
 });

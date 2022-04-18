@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Severity } from '../../enums/Severity';
 
 @Component({
@@ -6,15 +6,11 @@ import { Severity } from '../../enums/Severity';
   templateUrl: './toast.component.html',
   styleUrls: ['./toast.component.scss']
 })
-export class ToastComponent implements OnInit {
-  @Input() severity?: Severity;
+export class ToastComponent {
+  @Input() severity = Severity.INFO;
 
-  classes = 'toast toast--';
-
-  constructor() { }
-
-  ngOnInit(): void {
-    this.classes = `${this.classes}${this.severity}`;
+  get classes(): string[] {
+    return ['toast', `toast--${this.severity}`];
   }
 
 }

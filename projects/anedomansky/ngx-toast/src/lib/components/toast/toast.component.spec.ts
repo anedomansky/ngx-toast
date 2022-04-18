@@ -22,4 +22,16 @@ describe('ToastComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should render toast heading', () => {
+    const heading = fixture.nativeElement.querySelector('.toast__heading');
+
+    expect(heading).toBeTruthy();
+  });
+
+  it('should render toast text', () => {
+    const text = fixture.nativeElement.querySelector('.toast__text');
+
+    expect(text).toBeTruthy();
+  });
 });
