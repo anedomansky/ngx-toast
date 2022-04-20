@@ -8,8 +8,4 @@ import { Position } from '../../enums/Position';
 })
 export class ToastContainerComponent {
   @Input() position = Position.TOP_LEFT;
-
-  get classes(): string[] {
-    return ['toast-container', `toast-container--${this.position}`];
-  }
 }

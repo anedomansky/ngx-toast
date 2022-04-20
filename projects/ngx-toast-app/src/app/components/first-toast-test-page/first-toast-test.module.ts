@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FirstToastTestPageComponent } from '../components/first-toast-test-page/first-toast-test-page.component';
+import { FirstToastTestPageComponent } from './first-toast-test-page.component';
 import { NgxToastModule } from '@anedomansky/ngx-toast';
 
 
@@ -11,7 +11,7 @@ import { NgxToastModule } from '@anedomansky/ngx-toast';
   ],
   imports: [
     CommonModule,
-    NgxToastModule.forRoot(),
+    NgxToastModule,
   ]
 })
 export class FirstToastTestModule { }

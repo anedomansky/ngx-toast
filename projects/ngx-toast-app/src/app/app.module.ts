@@ -4,7 +4,7 @@ import { NgxToastModule } from '@anedomansky/ngx-toast';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
-import { FirstToastTestModule } from './first-toast-test/first-toast-test.module';
+import { FirstToastTestModule } from './components/first-toast-test-page/first-toast-test.module';
 
 @NgModule({
   declarations: [

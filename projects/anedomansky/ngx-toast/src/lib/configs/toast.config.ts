@@ -10,7 +10,7 @@ export interface ToastConfigToken {
     override: Partial<ToastConfig>;
 }
 
-export const DefaultToastConfig: ToastConfig = {
+export const defaultToastConfig: ToastConfig = {
     severity: Severity.INFO,
 };
 

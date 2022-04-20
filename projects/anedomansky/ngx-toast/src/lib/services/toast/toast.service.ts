@@ -53,6 +53,7 @@ export class ToastService {
 
   remove(toastIndex: number) {
     if (this.toasts[toastIndex]) {
+      // TODO: destroy() the specified toast
       this.toasts.splice(toastIndex, 1);
     }
   }

@@ -8,9 +8,4 @@ import { Severity } from '../../enums/Severity';
 })
 export class ToastComponent {
   @Input() severity = Severity.INFO;
-
-  get classes(): string[] {
-    return ['toast', `toast--${this.severity}`];
-  }
-
 }

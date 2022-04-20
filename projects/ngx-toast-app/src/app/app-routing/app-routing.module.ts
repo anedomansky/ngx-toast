@@ -9,7 +9,7 @@ const routes: Routes = [
   },
   {
     path: 'second-toast-test',
-    loadChildren: () => import('../second-toast-test/second-toast-test.module').then((m) => m.SecondToastTestModule),
+    loadChildren: () => import('../components/second-toast-test-page/second-toast-test.module').then((m) => m.SecondToastTestModule),
   },
 ];
 

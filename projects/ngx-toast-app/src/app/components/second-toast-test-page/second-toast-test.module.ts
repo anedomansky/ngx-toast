@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SecondToastTestPageComponent } from '../components/second-toast-test-page/second-toast-test-page.component';
+import { SecondToastTestPageComponent } from './second-toast-test-page.component';
 import { NgxToastModule } from '@anedomansky/ngx-toast';
-import { SecondToastTestRoutingModule } from '../components/second-toast-test-page/second-toast-test-routing/second-toast-test-routing.module';
+import { SecondToastTestRoutingModule } from './second-toast-test-routing/second-toast-test-routing.module';
 
 
 @NgModule({
@@ -11,7 +11,7 @@ import { SecondToastTestRoutingModule } from '../components/second-toast-test-pa
   ],
   imports: [
     CommonModule,
-    NgxToastModule.forRoot(),
+    NgxToastModule,
     SecondToastTestRoutingModule,
   ]
 })
