@@ -12,6 +12,7 @@ import { ToastDirective } from './toast.directive';
       <ng-template toast></ng-template>
     </div>
     <button type="button" class="btn" (click)="createInfoToast()">Create Toast</button>
+    <button type="button" class="btn--success" (click)="createSuccessToast()">Create Toast (Success)</button>
     <button type="button" class="btn--clear" (click)="clearToasts()">Clear Toasts</button>
     <button type="button" class="btn--remove" (click)="removeToast()">Remove Toast</button>
   `
@@ -22,7 +23,11 @@ class HostComponent {
   constructor(public toastService: ToastService) {}
 
   createInfoToast() {
-    this.toastService.create("Title", "Message text.", this.toast, { severity: Severity.INFO });
+    this.toastService.create("Title", "Message text.", this.toast);
+  }
+
+  createSuccessToast() {
+    this.toastService.create("Title", "Message text.", this.toast, { severity: Severity.SUCCESS });
   }
 
   clearToasts() {
@@ -83,6 +88,22 @@ describe('ToastDirective', () => {
     expect(toast).toBeTruthy();
   });
 
+  it('should render toast with override', () => {
+    jest.spyOn(testToastService, 'create');
+    const btn = fixture.nativeElement.querySelector('.btn--success') as HTMLButtonElement;
+
+    btn.dispatchEvent(new Event('click'));
+
+    fixture.detectChanges();
+
+    const toast = fixture.nativeElement.querySelector('.toast') as HTMLElement | null;
+
+    expect(testToastService.create).toHaveBeenCalledTimes(1);
+    expect(btn).toBeTruthy();
+    expect(toast).toBeTruthy();
+    expect(toast?.classList.contains('toast--success')).toBeTruthy();
+  });
+
   it('should clear toasts', () => {
     jest.spyOn(testToastService, 'clear');
     const btn = fixture.nativeElement.querySelector('.btn') as HTMLButtonElement;
@@ -105,6 +126,32 @@ describe('ToastDirective', () => {
     fixture.detectChanges();
 
     expect(testToastService.clear).toHaveBeenCalledTimes(1);
+    expect(fixture.nativeElement.querySelector('.toast')).toBeNull();
+  });
+
+  it('should remove specific toast', () => {
+    jest.spyOn(testToastService, 'remove');
+    const btn = fixture.nativeElement.querySelector('.btn') as HTMLButtonElement;
+    const removeBtn = fixture.nativeElement.querySelector('.btn--remove') as HTMLButtonElement;
+    
+    expect(btn).toBeTruthy();
+
+    btn.dispatchEvent(new Event('click'));
+
+    fixture.detectChanges();
+
+    const toast = fixture.nativeElement.querySelector('.toast');
+    
+    expect(toast).toBeTruthy();
+
+    expect(removeBtn).toBeTruthy();
+
+    removeBtn.dispatchEvent(new Event('click'));
+
+    fixture.detectChanges();
+
+    expect(testToastService.remove).toHaveBeenCalledTimes(1);
+    expect(testToastService.remove).toHaveBeenCalledWith(0);
     expect(fixture.nativeElement.querySelector('.toast')).toBeNull();
   });
 });

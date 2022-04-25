@@ -52,8 +52,10 @@ export class ToastService {
   }
 
   remove(toastIndex: number) {
-    if (this.toasts[toastIndex]) {
-      // TODO: destroy() the specified toast
+    const toastToBeRemoved = this.toasts.find((toast) => toast.index === toastIndex);
+    
+    if (toastToBeRemoved) {
+      toastToBeRemoved.component.destroy();
       this.toasts.splice(toastIndex, 1);
     }
   }
