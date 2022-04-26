@@ -3,5 +3,7 @@
     <span class="toast__heading">{{ title }}</span>
     <br />
     <span class="toast__text">{{ message }}</span>
-    <div *ngIf="progressBar" class="toast__progress-bar"></div>
+    <div *ngIf="progressBar" class="toast__progress-bar">
+        <div class="progress-bar" [style.width]="width + '%'"></div>
+    </div>
 </div>

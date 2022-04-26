@@ -5,6 +5,7 @@ export interface ToastConfig {
     severity: Severity;
     closeBtn: boolean;
     progressBar: boolean;
+    timeout: number;
 }
 
 export interface ToastConfigToken {
@@ -16,6 +17,7 @@ export const defaultToastConfig: ToastConfig = {
     severity: Severity.INFO,
     closeBtn: true,
     progressBar: true,
+    timeout: 5000,
 };
 
 /**
