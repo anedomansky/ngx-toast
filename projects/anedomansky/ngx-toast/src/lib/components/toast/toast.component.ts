@@ -57,9 +57,9 @@ export class ToastComponent implements ToastConfig, OnDestroy {
 
   constructor(public toastService: ToastService) {
     // TODO: animation state change to 'active'
-    this.timeoutHandler = setTimeout(this.remove, this.timeout);
+    this.timeoutHandler = setTimeout(() => this.remove(), this.timeout);
     this.timeToHide = new Date().getTime() + this.timeout;
-    this.intervalId = setInterval(this.updateProgressBar, 10);
+    this.intervalId = setInterval(() => this.updateProgressBar(), 10);
   }
 
   private remove() {
@@ -76,6 +76,7 @@ export class ToastComponent implements ToastConfig, OnDestroy {
     const now = new Date().getTime();
     const remainingTime = this.timeToHide - now;
     this.width = (remainingTime / this.timeout) * 100;
+    this.width = 100 - this.width;
 
     if (this.width <= 0) {
       this.width = 0;
