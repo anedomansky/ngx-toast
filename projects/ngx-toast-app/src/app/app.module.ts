@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxToastModule } from '@anedomansky/ngx-toast';
 
 import { AppComponent } from './app.component';
@@ -12,6 +13,8 @@ import { FirstToastTestModule } from './components/first-toast-test-page/first-t
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    // NoopAnimationsModule,
     NgxToastModule.forRoot(),
     AppRoutingModule,
     FirstToastTestModule,

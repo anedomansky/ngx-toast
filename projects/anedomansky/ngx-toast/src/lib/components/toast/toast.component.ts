@@ -1,4 +1,5 @@
-import { Component, Input, OnDestroy } from '@angular/core';
+import { animate, state, style, transition, trigger } from '@angular/animations';
+import { Component, HostBinding, Input, OnDestroy } from '@angular/core';
 import { ToastConfig } from '../../configs/toast.config';
 import { Severity } from '../../enums/Severity';
 import { ToastService } from '../../services/toast/toast.service';
@@ -6,7 +7,16 @@ import { ToastService } from '../../services/toast/toast.service';
 @Component({
   selector: 'ngx-toast',
   templateUrl: './toast.component.html',
-  styleUrls: ['./toast.component.scss']
+  styleUrls: ['./toast.component.scss'],
+  animations: [
+    trigger('inOut', [
+      state('inactive', style({ opacity: 0 })),
+      state('active', style({ opacity: 1 })),
+      state('removed', style({ opacity: 0 })),
+      transition('inactive => active', animate('{{ easeTime }}ms {{ easing }}')),
+      transition('active => removed', animate('{{ easeTime }}ms {{ easing }}')),
+    ])
+  ],
 })
 export class ToastComponent implements ToastConfig, OnDestroy {
   /**
@@ -47,6 +57,20 @@ export class ToastComponent implements ToastConfig, OnDestroy {
    */
   @Input() timeout = 5000;
 
+  /**
+   * The Index is used in order to remove the toast via {@link ToastService}.
+   */
+  @Input() index?: number;
+
+  @HostBinding('@inOut')
+  state = {
+    value: 'inactive',
+    params: {
+      easeTime: 3000,
+      easing: 'ease-in',
+    }
+  };
+
   width = -1;
 
   private timeToHide: number;
@@ -56,16 +80,15 @@ export class ToastComponent implements ToastConfig, OnDestroy {
   private intervalId: ReturnType<typeof setInterval>;
 
   constructor(public toastService: ToastService) {
-    // TODO: animation state change to 'active'
+    this.state = { ...this.state, value: 'active' };
     this.timeoutHandler = setTimeout(() => this.remove(), this.timeout);
     this.timeToHide = new Date().getTime() + this.timeout;
     this.intervalId = setInterval(() => this.updateProgressBar(), 10);
   }
 
-  private remove() {
-    // TODO: remove the toast by index - inject ToastService
-    // this.toastService.remove(index) - created and injected from ToastService upon creation?
-    // TODO: animation state change to 'removed'
+  remove() {
+    this.state = { ...this.state, value: 'removed' };
+    this.toastService.remove(this.index); 
   }
 
   private updateProgressBar() {

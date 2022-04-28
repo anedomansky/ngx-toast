@@ -14,7 +14,7 @@ interface Toast {
 export class ToastService {
   toastConfig: ToastConfig;
   toasts: Toast[] = [];
-  private index = 0;
+  private index = 1;
 
   constructor(
     @Inject(TOAST_CONFIG) toastToken: ToastConfigToken,
@@ -39,6 +39,7 @@ export class ToastService {
     componentRef.instance.closeBtn = this.toastConfig.closeBtn;
     componentRef.instance.progressBar = this.toastConfig.progressBar;
     componentRef.instance.timeout = this.toastConfig.timeout;
+    componentRef.instance.index = this.index;
     this.add(componentRef);
   }
 
@@ -54,9 +55,13 @@ export class ToastService {
     this.createToast(title, message, toastDirective);
   }
 
-  remove(toastIndex: number) {
+  remove(toastIndex?: number) {
+    if (!toastIndex) {
+      return;
+    }
+
     const toastToBeRemoved = this.toasts.find((toast) => toast.index === toastIndex);
-    
+
     if (toastToBeRemoved) {
       toastToBeRemoved.component.destroy();
       this.toasts.splice(toastIndex, 1);
@@ -66,6 +71,6 @@ export class ToastService {
   clear() {
     this.toasts.forEach((toast) => toast.component.destroy());
     this.toasts = [];
-    this.index = 0;
+    this.index = 1;
   }
 }
