@@ -13,8 +13,13 @@ import { ToastService } from '../../services/toast/toast.service';
       state('inactive', style({ opacity: 0 })),
       state('active', style({ opacity: 1 })),
       state('removed', style({ opacity: 0 })),
-      transition('inactive => active', animate('{{ easeTime }}ms {{ easing }}')),
-      transition('active => removed', animate('{{ easeTime }}ms {{ easing }}')),
+      transition('inactive => active, :enter', animate('1500ms 100ms ease-in')),
+      transition('active => removed, :leave', animate('1300ms 100ms ease-in')),
+
+      // state('void', style({ opacity: 0 })),
+      // state('*', style({ opacity: 1 })),
+      // transition(':enter', animate('1500ms 100ms ease-in')),
+      // transition(':leave', animate('300ms 100ms ease-in')),
     ])
   ],
 })
@@ -62,11 +67,11 @@ export class ToastComponent implements ToastConfig, OnDestroy {
    */
   @Input() index?: number;
 
-  @HostBinding('@inOut')
+  // @HostBinding('@inOut')
   state = {
     value: 'inactive',
     params: {
-      easeTime: 3000,
+      easeTime: 300,
       easing: 'ease-in',
     }
   };
