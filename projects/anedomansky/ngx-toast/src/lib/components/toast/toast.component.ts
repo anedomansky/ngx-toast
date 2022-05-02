@@ -13,13 +13,8 @@ import { ToastService } from '../../services/toast/toast.service';
       state('inactive', style({ opacity: 0 })),
       state('active', style({ opacity: 1 })),
       state('removed', style({ opacity: 0 })),
-      transition('inactive => active, :enter', animate('1500ms 100ms ease-in')),
-      transition('active => removed, :leave', animate('1300ms 100ms ease-in')),
-
-      // state('void', style({ opacity: 0 })),
-      // state('*', style({ opacity: 1 })),
-      // transition(':enter', animate('1500ms 100ms ease-in')),
-      // transition(':leave', animate('300ms 100ms ease-in')),
+      transition('inactive => active, :enter', animate('{{ easeTime }}ms 100ms ease-in')),
+      transition('active => removed, :leave', animate('{{ easeTime }}ms ease-out')),
     ])
   ],
 })
@@ -67,12 +62,11 @@ export class ToastComponent implements ToastConfig, OnDestroy {
    */
   @Input() index?: number;
 
-  // @HostBinding('@inOut')
+  @HostBinding('@inOut')
   state = {
     value: 'inactive',
     params: {
       easeTime: 300,
-      easing: 'ease-in',
     }
   };
 
@@ -93,7 +87,7 @@ export class ToastComponent implements ToastConfig, OnDestroy {
 
   remove() {
     this.state = { ...this.state, value: 'removed' };
-    this.toastService.remove(this.index); 
+    setTimeout(() => this.toastService.remove(this.index), 300);
   }
 
   private updateProgressBar() {

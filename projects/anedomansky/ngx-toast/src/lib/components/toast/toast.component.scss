@@ -6,7 +6,6 @@
     border-left: 8px solid black;
     min-width: 175px;
     margin-bottom: 0.5rem;
-    opacity: 0;
 
     &--success {
         border-color: green;
@@ -53,4 +52,8 @@
         background-color: black;
         opacity: 0.5;
     }
+}
+
+:host {
+    opacity: 0;
 }
