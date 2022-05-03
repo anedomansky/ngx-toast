@@ -1,7 +1,7 @@
 .toast {
     display: flex;
     flex-direction: column;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     border-radius: 5px;
     border-left: 8px solid black;
     min-width: 175px;
@@ -10,23 +10,23 @@
     &--success {
         border-color: green;
     }
-    
+
     &--info {
         border-color: blue;
     }
-    
+
     &--warning {
         border-color: yellow;
     }
-    
+
     &--error {
         border-color: red;
     }
 
     &__close {
         display: flex;
-        justify-content: end;
-        
+        justify-content: flex-end;
+
         .btn {
             border: 0;
             background: none;

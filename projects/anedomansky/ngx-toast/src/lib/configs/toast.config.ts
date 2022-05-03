@@ -2,9 +2,10 @@ import { InjectionToken } from '@angular/core';
 import { Severity } from '../enums/Severity';
 
 export interface ToastConfig {
-    severity: Severity;
     closeBtn: boolean;
+    easeTime: number;
     progressBar: boolean;
+    severity: Severity;
     timeout: number;
 }
 
@@ -14,9 +15,10 @@ export interface ToastConfigToken {
 }
 
 export const defaultToastConfig: ToastConfig = {
-    severity: Severity.INFO,
     closeBtn: true,
+    easeTime: 300,
     progressBar: true,
+    severity: Severity.INFO,
     timeout: 5000,
 };
 

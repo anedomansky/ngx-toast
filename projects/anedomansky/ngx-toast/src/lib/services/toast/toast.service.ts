@@ -33,13 +33,14 @@ export class ToastService {
   private createToast(title: string, message: string, toastDirective: ToastDirective) {
     const viewContainerRef = toastDirective.viewContainerRef;
     const componentRef = viewContainerRef.createComponent(ToastComponent);
-    componentRef.instance.severity = this.toastConfig.severity;
-    componentRef.instance.title = title;
-    componentRef.instance.message = message;
     componentRef.instance.closeBtn = this.toastConfig.closeBtn;
-    componentRef.instance.progressBar = this.toastConfig.progressBar;
-    componentRef.instance.timeout = this.toastConfig.timeout;
+    componentRef.instance.easeTime = this.toastConfig.easeTime;
     componentRef.instance.index = this.index;
+    componentRef.instance.message = message;
+    componentRef.instance.progressBar = this.toastConfig.progressBar;
+    componentRef.instance.severity = this.toastConfig.severity;
+    componentRef.instance.timeout = this.toastConfig.timeout;
+    componentRef.instance.title = title;
     this.add(componentRef);
   }
 

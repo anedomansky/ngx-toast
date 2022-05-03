@@ -1,4 +1,4 @@
-<div class="toast toast--{{ severity }}">
+<div class="toast toast--{{ severity }} {{ additionalClasses }}">
     <div class="toast__close">
         <button *ngIf="closeBtn" class="btn" type="button" aria-label="Close" (click)="remove()">&times;</button>
     </div>
