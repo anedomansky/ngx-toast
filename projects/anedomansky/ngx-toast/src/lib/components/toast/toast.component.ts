@@ -100,7 +100,7 @@ export class ToastComponent implements ToastConfig, OnDestroy {
     this.intervalId = setInterval(() => this.updateProgressBar(), 10);
   }
   
-  private updateProgressBar() {
+  updateProgressBar() {
     if (this.width === 0 || this.width === 100) {
       return;
     }
