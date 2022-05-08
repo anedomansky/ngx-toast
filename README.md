@@ -1,27 +1,68 @@
-# NgxToastWorkspace
+# ngx-toast
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.5.
+An easy to use toast component.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- renders toasts into an optional target directive
+- [Angular animations](https://angular.io/guide/animations?msclkid=dc2c1c30ceb411ec93736e7df53f3363)
+- lazy loading compatible
 
-## Code scaffolding
+## Dependencies
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+| ngx-toast | Angular |
+|-----------|---------|
+| current   | >= 13   |
 
-## Build
+## Installation
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Requirements
 
-## Running unit tests
+```cli
+npm install @angular/animations
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Install
 
-## Running end-to-end tests
+```cli
+npm install @anedomansky/ngx-toast
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Setup
 
-## Further help
+Add `BrowserAnimationsModule` and `NgxToastModule`:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```ts
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxToastModule } from '@anedomansky/ngx-toast';
+
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing/app-routing.module';
+import { FirstToastTestModule } from './components/first-toast-test-page/first-toast-test.module';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    NgxToastModule.forRoot(),
+    AppRoutingModule,
+    FirstToastTestModule,
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
+
+## Usage
+
+## Props
+
+## License
+
+[MIT](https://mit-license.org/?msclkid=0221946bceb211ecb66762ca534c702d)
