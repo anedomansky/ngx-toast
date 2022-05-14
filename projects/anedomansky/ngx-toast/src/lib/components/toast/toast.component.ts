@@ -64,7 +64,7 @@ export class ToastComponent implements ToastConfig, OnDestroy {
   @Input() severity = Severity.INFO;
 
   /**
-   * The Time in 'ms' until the toast is automatically removed.
+   * The time in 'ms' until the toast is automatically removed.
    * 
    * @default 5000
    */
