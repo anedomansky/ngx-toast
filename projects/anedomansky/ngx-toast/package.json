@@ -1,6 +1,33 @@
 {
   "name": "@anedomansky/ngx-toast",
   "version": "0.0.1",
+  "description": "An easy to use toast component.",
+  "author": "Alexander Nedomansky <nedomanskya@outlook.com>",
+  "license": "MIT",
+  "keywords": [
+    "angular",
+    "toast"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://git@github.com/anedomansky/ngx-toast.git"
+  },
+  "bugs": {
+    "url": "https://github.com/anedomansky/ngx-toast/issues"
+  },
+  "homepage": "https://github.com/anedomansky/ngx-toast#readme",
+  "scripts": {
+    "build": "ng build @anedomansky/ngx-toast",
+    "watch": "ng build @anedomansky/ngx-toast --watch --configuration development",
+    "test": "jest --config ./jest.config.js",
+    "test:coverage": "jest --coverage --config ./jest.config.js",
+    "test:watch": "jest -o --watch --config ./jest.config.js",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run lint && npm run test",
+    "preversion": "npm run lint && npm run test",
+    "version": "git add -A src",
+    "postversion": "git push && git push --tags"
+  },
   "peerDependencies": {
     "@angular/common": "^13.2.0",
     "@angular/core": "^13.2.0"
