@@ -2,28 +2,39 @@ import { Component, ViewChild } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-import { defaultToastConfig, TOAST_CONFIG,ToastConfig } from '../configs/toast.config';
+import {
+  defaultToastConfig,
+  TOAST_CONFIG,
+  ToastConfig,
+} from '../configs/toast.config';
 import { Severity } from '../enums/Severity';
 import { NgxToastModule } from '../ngx-toast.module';
 import { ToastService } from '../services/toast/toast.service';
 import { ToastDirective } from './toast.directive';
 
 @Component({
-  template:  <div class="host">   <ng-template toast></ng-template> </div><button type="button" class="btn" (click)="createInfoToast()">
-  Create Toast
-t</button><button type="button" class="btn--success" (click)="createSuccessToast()">
-  Create Toast (Success)
-)</button><button type="button" class="btn--clear" (click)="clearToasts()">
-  Clear Toasts
-s</button><button type="button" class="btn--remove" (click)="removeToast()">
-  Remove Toast
-t</button><button
-  type="button"
-  class="btn--remove-wrong-index"
-  (click)="removeToastWrongIndex()"
->
-  Remove Toast (Wrong index)
-)</button> `,
+  template: `<div class="host">
+      <ng-template ngxToast></ng-template>
+    </div>
+    <button type="button" class="btn" (click)="createInfoToast()">
+      Create Toast t
+    </button>
+    <button type="button" class="btn--success" (click)="createSuccessToast()">
+      Create Toast (Success) )
+    </button>
+    <button type="button" class="btn--clear" (click)="clearToasts()">
+      Clear Toasts s
+    </button>
+    <button type="button" class="btn--remove" (click)="removeToast()">
+      Remove Toast t
+    </button>
+    <button
+      type="button"
+      class="btn--remove-wrong-index"
+      (click)="removeToastWrongIndex()"
+    >
+      Remove Toast (Wrong index) )
+    </button> `,
 })
 class HostComponent {
   @ViewChild(ToastDirective, { static: true }) toast!: ToastDirective;

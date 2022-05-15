@@ -1,7 +1,7 @@
 import { Directive, ViewContainerRef } from '@angular/core';
 
 @Directive({
-  selector: '[toast]',
+  selector: '[ngxToast]',
 })
 export class ToastDirective {
   constructor(public viewContainerRef: ViewContainerRef) {}

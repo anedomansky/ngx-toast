@@ -12,7 +12,7 @@ interface Toast {
 }
 
 @Component({
-  selector: 'app-first-toast-test-page',
+  selector: 'ngx-first-toast-test-page',
   templateUrl: './first-toast-test-page.component.html',
   styleUrls: ['./first-toast-test-page.component.scss'],
 })
@@ -26,25 +26,25 @@ export class FirstToastTestPageComponent {
 
   constructor(public toastService: ToastService) {}
 
-  createSuccessToast() {
+  createSuccessToast(): void {
     this.toastService.create('Title', 'Message text.', this.toast, {
       severity: Severity.SUCCESS,
     });
   }
 
-  createInfoToast() {
+  createInfoToast(): void {
     this.toastService.create('Title', 'Message text.', this.toast, {
       severity: Severity.INFO,
     });
   }
 
-  createWarningToast() {
+  createWarningToast(): void {
     this.toastService.create('Title', 'Message text.', this.toast, {
       severity: Severity.WARNING,
     });
   }
 
-  createErrorToast() {
+  createErrorToast(): void {
     this.toastService.create('Title', 'Message text.', this.toast, {
       severity: Severity.ERROR,
     });

@@ -119,7 +119,7 @@ export class ToastComponent implements ToastConfig, OnDestroy {
     this.intervalId = setInterval(() => this.updateProgressBar(), 10);
   }
 
-  updateProgressBar() {
+  updateProgressBar(): void {
     if (this.width === 0 || this.width === 100) {
       return;
     }
@@ -138,7 +138,7 @@ export class ToastComponent implements ToastConfig, OnDestroy {
     }
   }
 
-  remove() {
+  remove(): void {
     this.state = { ...this.state, value: 'removed' };
     setTimeout(() => this.toastService.remove(this.index), this.easeTime);
   }
@@ -149,13 +149,13 @@ export class ToastComponent implements ToastConfig, OnDestroy {
   }
 
   @HostListener('mouseenter')
-  keepAlive() {
+  keepAlive(): void {
     clearTimeout(this.timeoutHandler);
     clearInterval(this.intervalId);
   }
 
   @HostListener('mouseleave')
-  resume() {
+  resume(): void {
     this.timeoutHandler = setTimeout(() => this.remove(), this.remainingTime);
     this.timeToHide = new Date().getTime() + this.remainingTime;
     this.intervalId = setInterval(() => this.updateProgressBar(), 10);

@@ -3,7 +3,8 @@
   "ignorePatterns": [
     "dist/**/*",
     "coverage/**/*",
-    "*.js"
+    "*.js",
+    "toast.directive.spec.ts"
   ],
   "overrides": [
     {

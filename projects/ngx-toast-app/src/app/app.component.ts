@@ -12,7 +12,7 @@ interface Toast {
 }
 
 @Component({
-  selector: 'app-root',
+  selector: 'ngx-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
@@ -26,25 +26,25 @@ export class AppComponent {
 
   constructor(public toastService: ToastService) {}
 
-  createSuccessToast() {
+  createSuccessToast(): void {
     this.toastService.create('Title', 'Message text.', this.toast, {
       severity: Severity.SUCCESS,
     });
   }
 
-  createInfoToast() {
+  createInfoToast(): void {
     this.toastService.create('Title', 'Message text.', this.toast, {
       severity: Severity.INFO,
     });
   }
 
-  createWarningToast() {
+  createWarningToast(): void {
     this.toastService.create('Title', 'Message text.', this.toast, {
       severity: Severity.WARNING,
     });
   }
 
-  createErrorToast() {
+  createErrorToast(): void {
     this.toastService.create('Title', 'Message text.', this.toast, {
       severity: Severity.ERROR,
     });

@@ -63,12 +63,12 @@ export class ToastService {
     message: string,
     toastDirective: ToastDirective,
     override: Partial<ToastConfig> = {}
-  ) {
+  ): void {
     this.applyConfig(override);
     this.createToast(title, message, toastDirective);
   }
 
-  remove(toastIndex?: number) {
+  remove(toastIndex?: number): void {
     if (!toastIndex) {
       return;
     }
@@ -83,7 +83,7 @@ export class ToastService {
     }
   }
 
-  clear() {
+  clear(): void {
     this.toasts.forEach((toast) => toast.component.destroy());
     this.toasts = [];
     this.index = 1;
