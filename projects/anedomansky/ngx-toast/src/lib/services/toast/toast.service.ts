@@ -1,6 +1,11 @@
 import { ComponentRef, Inject, Injectable } from '@angular/core';
+
 import { ToastComponent } from '../../components/toast/toast.component';
-import { ToastConfig, ToastConfigToken, TOAST_CONFIG } from '../../configs/toast.config';
+import {
+  TOAST_CONFIG,
+  ToastConfig,
+  ToastConfigToken,
+} from '../../configs/toast.config';
 import { ToastDirective } from '../../directives/toast.directive';
 
 interface Toast {
@@ -9,16 +14,14 @@ interface Toast {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ToastService {
   toastConfig: ToastConfig;
   toasts: Toast[] = [];
   private index = 1;
 
-  constructor(
-    @Inject(TOAST_CONFIG) toastToken: ToastConfigToken,
-  ) {
+  constructor(@Inject(TOAST_CONFIG) toastToken: ToastConfigToken) {
     this.toastConfig = {
       ...toastToken.config,
       ...toastToken.override,
@@ -30,7 +33,11 @@ export class ToastService {
     this.index += 1;
   }
 
-  private createToast(title: string, message: string, toastDirective: ToastDirective) {
+  private createToast(
+    title: string,
+    message: string,
+    toastDirective: ToastDirective
+  ) {
     const viewContainerRef = toastDirective.viewContainerRef;
     const componentRef = viewContainerRef.createComponent(ToastComponent);
     componentRef.instance.closeBtn = this.toastConfig.closeBtn;
@@ -51,7 +58,12 @@ export class ToastService {
     };
   }
 
-  create(title: string, message: string, toastDirective: ToastDirective, override: Partial<ToastConfig> = {}) {
+  create(
+    title: string,
+    message: string,
+    toastDirective: ToastDirective,
+    override: Partial<ToastConfig> = {}
+  ) {
     this.applyConfig(override);
     this.createToast(title, message, toastDirective);
   }
@@ -61,7 +73,9 @@ export class ToastService {
       return;
     }
 
-    const toastToBeRemoved = this.toasts.find((toast) => toast.index === toastIndex);
+    const toastToBeRemoved = this.toasts.find(
+      (toast) => toast.index === toastIndex
+    );
 
     if (toastToBeRemoved) {
       toastToBeRemoved.component.destroy();

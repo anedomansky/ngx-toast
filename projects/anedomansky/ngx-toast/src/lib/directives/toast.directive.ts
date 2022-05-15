@@ -1,10 +1,8 @@
 import { Directive, ViewContainerRef } from '@angular/core';
 
 @Directive({
-  selector: '[toast]'
+  selector: '[toast]',
 })
 export class ToastDirective {
-
-  constructor(public viewContainerRef: ViewContainerRef) { }
-
+  constructor(public viewContainerRef: ViewContainerRef) {}
 }

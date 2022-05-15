@@ -1,9 +1,13 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { defaultToastConfig, ToastConfig, TOAST_CONFIG } from '../../configs/toast.config';
+
+import {
+  defaultToastConfig,
+  TOAST_CONFIG,
+  ToastConfig,
+} from '../../configs/toast.config';
 import { ToastService } from '../../services/toast/toast.service';
 import { ToastComponent } from './toast.component';
-
 
 describe('ToastComponent', () => {
   let component: ToastComponent;
@@ -23,8 +27,7 @@ describe('ToastComponent', () => {
         },
         ToastService,
       ],
-    })
-      .compileComponents();
+    }).compileComponents();
   });
 
   beforeEach(() => {

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { FirstToastTestPageComponent } from '../components/first-toast-test-page/first-toast-test-page.component';
 
 const routes: Routes = [
@@ -9,17 +10,16 @@ const routes: Routes = [
   },
   {
     path: 'second-toast-test',
-    loadChildren: () => import('../components/second-toast-test-page/second-toast-test.module').then((m) => m.SecondToastTestModule),
+    loadChildren: () =>
+      import(
+        '../components/second-toast-test-page/second-toast-test.module'
+      ).then((m) => m.SecondToastTestModule),
   },
 ];
 
 @NgModule({
   declarations: [],
-  imports: [
-    RouterModule.forRoot(routes),
-  ],
-  exports: [
-    RouterModule
-  ]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

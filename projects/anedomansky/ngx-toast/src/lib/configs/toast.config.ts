@@ -1,25 +1,26 @@
 import { InjectionToken } from '@angular/core';
+
 import { Severity } from '../enums/Severity';
 
 export interface ToastConfig {
-    closeBtn: boolean;
-    easeTime: number;
-    progressBar: boolean;
-    severity: Severity;
-    timeout: number;
+  closeBtn: boolean;
+  easeTime: number;
+  progressBar: boolean;
+  severity: Severity;
+  timeout: number;
 }
 
 export interface ToastConfigToken {
-    config: ToastConfig;
-    override: Partial<ToastConfig>;
+  config: ToastConfig;
+  override: Partial<ToastConfig>;
 }
 
 export const defaultToastConfig: ToastConfig = {
-    closeBtn: true,
-    easeTime: 300,
-    progressBar: true,
-    severity: Severity.INFO,
-    timeout: 5000,
+  closeBtn: true,
+  easeTime: 300,
+  progressBar: true,
+  severity: Severity.INFO,
+  timeout: 5000,
 };
 
 /**

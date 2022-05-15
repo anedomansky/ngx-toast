@@ -1,5 +1,18 @@
-import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Component, HostBinding, HostListener, Input, OnDestroy } from '@angular/core';
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
+import {
+  Component,
+  HostBinding,
+  HostListener,
+  Input,
+  OnDestroy,
+} from '@angular/core';
+
 import { ToastConfig } from '../../configs/toast.config';
 import { Severity } from '../../enums/Severity';
 import { ToastService } from '../../services/toast/toast.service';
@@ -13,28 +26,34 @@ import { ToastService } from '../../services/toast/toast.service';
       state('inactive', style({ opacity: 0 })),
       state('active', style({ opacity: 1 })),
       state('removed', style({ opacity: 0 })),
-      transition('inactive => active, :enter', animate('{{ easeTime }}ms 100ms ease-in')),
-      transition('active => removed, :leave', animate('{{ easeTime }}ms ease-out')),
-    ])
+      transition(
+        'inactive => active, :enter',
+        animate('{{ easeTime }}ms 100ms ease-in')
+      ),
+      transition(
+        'active => removed, :leave',
+        animate('{{ easeTime }}ms ease-out')
+      ),
+    ]),
   ],
 })
 export class ToastComponent implements ToastConfig, OnDestroy {
   /**
    * Additional CSS-classes that will be appended to the '.toast'.
-   * Separated by a whitespace. 
+   * Separated by a whitespace.
    */
   @Input() additionalClasses?: string;
 
   /**
    * Display the close button.
-   * 
+   *
    * @default true
    */
   @Input() closeBtn = true;
 
   /**
    * Animation time in 'ms'.
-   * 
+   *
    * @default 300
    */
   @Input() easeTime = 300;
@@ -51,21 +70,21 @@ export class ToastComponent implements ToastConfig, OnDestroy {
 
   /**
    * Display the progress bar.
-   * 
+   *
    * @default true
    */
   @Input() progressBar = true;
 
   /**
    * Specifies the theme of the toast.
-   * 
+   *
    * @default info
    */
   @Input() severity = Severity.INFO;
 
   /**
    * The time in 'ms' until the toast is automatically removed.
-   * 
+   *
    * @default 5000
    */
   @Input() timeout = 5000;
@@ -80,7 +99,7 @@ export class ToastComponent implements ToastConfig, OnDestroy {
     value: 'inactive',
     params: {
       easeTime: this.easeTime,
-    }
+    },
   };
 
   width = -1;
@@ -99,26 +118,26 @@ export class ToastComponent implements ToastConfig, OnDestroy {
     this.timeToHide = new Date().getTime() + this.timeout;
     this.intervalId = setInterval(() => this.updateProgressBar(), 10);
   }
-  
+
   updateProgressBar() {
     if (this.width === 0 || this.width === 100) {
       return;
     }
-    
+
     const now = new Date().getTime();
     this.remainingTime = this.timeToHide - now;
     this.width = (this.remainingTime / this.timeout) * 100;
     this.width = 100 - this.width;
-    
+
     if (this.width <= 0) {
       this.width = 0;
     }
-    
+
     if (this.width >= 100) {
       this.width = 100;
     }
   }
-  
+
   remove() {
     this.state = { ...this.state, value: 'removed' };
     setTimeout(() => this.toastService.remove(this.index), this.easeTime);

@@ -8,9 +8,8 @@ describe('SecondToastTestPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SecondToastTestPageComponent ]
-    })
-    .compileComponents();
+      declarations: [SecondToastTestPageComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

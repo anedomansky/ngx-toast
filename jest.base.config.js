@@ -1,7 +1,7 @@
 module.exports = {
   preset: 'jest-preset-angular',
   setupFilesAfterEnv: ['<rootDir>/../../setupJest.ts'],
-  coverageDirectory: '<rootDir>/../../target/ngx-toast-app/coverage/',
+  coverageDirectory: '<rootDir>/../../coverage/ngx-toast-app/',
   coverageThreshold: {
     global: {
       branches: 80,

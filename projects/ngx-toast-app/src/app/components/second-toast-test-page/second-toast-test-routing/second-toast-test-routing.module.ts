@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { SecondToastTestPageComponent } from '../second-toast-test-page.component';
 
 const routes: Routes = [
@@ -11,11 +12,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [],
-  imports: [
-    RouterModule.forChild(routes),
-  ],
-  exports: [
-    RouterModule
-  ]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
-export class SecondToastTestRoutingModule { }
+export class SecondToastTestRoutingModule {}

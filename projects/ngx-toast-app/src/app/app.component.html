@@ -1,19 +1,31 @@
 <section class="btn-container">
-    <button class="btn btn--success" (click)="createSuccessToast()">Success</button>
-    <button class="btn btn--info" (click)="createInfoToast()">Info</button>
-    <button class="btn btn--warning" (click)="createWarningToast()">Warning</button>
-    <button class="btn btn--error" (click)="createErrorToast()">Error</button>
+  <button class="btn btn--success" (click)="createSuccessToast()">
+    Success
+  </button>
+  <button class="btn btn--info" (click)="createInfoToast()">Info</button>
+  <button class="btn btn--warning" (click)="createWarningToast()">
+    Warning
+  </button>
+  <button class="btn btn--error" (click)="createErrorToast()">Error</button>
 </section>
 <!-- TODO: use ToastContainerComponent instead of manually creating a section + class -->
 <ngx-toast-container [position]="position">
-    <ng-template toast></ng-template>
-    <!-- ngFor list of toasts; on btn click generate new toast and prepend / append it to the list -->
-    <!-- <ngx-toast [additionalClassNames]="additionalClasses" [position]="position" [severity]="severity"></ngx-toast> -->
+  <ng-template toast></ng-template>
+  <!-- ngFor list of toasts; on btn click generate new toast and prepend / append it to the list -->
+  <!-- <ngx-toast [additionalClassNames]="additionalClasses" [position]="position" [severity]="severity"></ngx-toast> -->
 </ngx-toast-container>
 <nav>
-    <ul>
-        <li><a routerLink="/first-toast-test" routerLinkActive="active">First Toast Test (top-right)</a></li>
-        <li><a routerLink="/second-toast-test" routerLinkActive="active">Second Toast Test (bottom-right)</a></li>
-    </ul>
+  <ul>
+    <li>
+      <a routerLink="/first-toast-test" routerLinkActive="active"
+        >First Toast Test (top-right)</a
+      >
+    </li>
+    <li>
+      <a routerLink="/second-toast-test" routerLinkActive="active"
+        >Second Toast Test (bottom-right)</a
+      >
+    </li>
+  </ul>
 </nav>
 <router-outlet></router-outlet>

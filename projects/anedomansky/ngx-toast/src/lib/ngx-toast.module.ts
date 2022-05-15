@@ -1,44 +1,48 @@
-import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import {
+  ModuleWithProviders,
+  NgModule,
+  Optional,
+  SkipSelf,
+} from '@angular/core';
+
 import { ToastComponent } from './components/toast/toast.component';
 import { ToastContainerComponent } from './components/toast-container/toast-container.component';
+import {
+  defaultToastConfig,
+  TOAST_CONFIG,
+  ToastConfig,
+} from './configs/toast.config';
 import { ToastDirective } from './directives/toast.directive';
-import { defaultToastConfig, ToastConfig, TOAST_CONFIG } from './configs/toast.config';
-import { CommonModule } from '@angular/common';
 
 @NgModule({
-  declarations: [
-    ToastComponent,
-    ToastContainerComponent,
-    ToastDirective,
-  ],
-  imports: [
-    CommonModule,
-  ],
-  exports: [
-    ToastComponent,
-    ToastContainerComponent,
-    ToastDirective,
-  ]
+  declarations: [ToastComponent, ToastContainerComponent, ToastDirective],
+  imports: [CommonModule],
+  exports: [ToastComponent, ToastContainerComponent, ToastDirective],
 })
 export class NgxToastModule {
   /**
    * Ensures that the module is only loaded once.
-   * 
-   * @param parentModule 
+   *
+   * @param parentModule
    */
   constructor(@Optional() @SkipSelf() parentModule: NgxToastModule) {
     if (parentModule) {
-      throw new Error('NgxToastModule is already loaded. Please add it only once.');
+      throw new Error(
+        'NgxToastModule is already loaded. Please add it only once.'
+      );
     }
   }
 
   /**
    * The user can pass an initial override that will be applied to the existing ToastComponent configuration.
-   * 
-   * @param override 
-   * @returns 
+   *
+   * @param override
+   * @returns
    */
-  static forRoot(override: Partial<ToastConfig> = {}): ModuleWithProviders<NgxToastModule> {
+  static forRoot(
+    override: Partial<ToastConfig> = {}
+  ): ModuleWithProviders<NgxToastModule> {
     return {
       ngModule: NgxToastModule,
       providers: [
@@ -47,9 +51,9 @@ export class NgxToastModule {
           useValue: {
             config: defaultToastConfig,
             override,
-          }
-        }
-      ]
-    }
+          },
+        },
+      ],
+    };
   }
 }

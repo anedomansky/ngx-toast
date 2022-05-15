@@ -1,5 +1,10 @@
+import {
+  Position,
+  Severity,
+  ToastDirective,
+  ToastService,
+} from '@anedomansky/ngx-toast';
 import { Component, ViewChild } from '@angular/core';
-import { Position, Severity, ToastDirective, ToastService } from '@anedomansky/ngx-toast';
 
 interface Toast {
   severity: Severity;
@@ -9,7 +14,7 @@ interface Toast {
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   additionalClasses = 'test';
@@ -17,23 +22,31 @@ export class AppComponent {
   severity = Severity.SUCCESS;
   toasts: Toast[] = [];
 
-  @ViewChild(ToastDirective, {static: true}) toast!: ToastDirective;
+  @ViewChild(ToastDirective, { static: true }) toast!: ToastDirective;
 
   constructor(public toastService: ToastService) {}
 
   createSuccessToast() {
-    this.toastService.create("Title", "Message text.", this.toast, { severity: Severity.SUCCESS });
+    this.toastService.create('Title', 'Message text.', this.toast, {
+      severity: Severity.SUCCESS,
+    });
   }
 
   createInfoToast() {
-    this.toastService.create("Title", "Message text.", this.toast, { severity: Severity.INFO });
+    this.toastService.create('Title', 'Message text.', this.toast, {
+      severity: Severity.INFO,
+    });
   }
 
   createWarningToast() {
-    this.toastService.create("Title", "Message text.", this.toast, { severity: Severity.WARNING });
+    this.toastService.create('Title', 'Message text.', this.toast, {
+      severity: Severity.WARNING,
+    });
   }
 
   createErrorToast() {
-    this.toastService.create("Title", "Message text.", this.toast, { severity: Severity.ERROR });
+    this.toastService.create('Title', 'Message text.', this.toast, {
+      severity: Severity.ERROR,
+    });
   }
 }
