@@ -58,6 +58,13 @@ export class ToastService {
     };
   }
 
+  /**
+   * Creates a new toast.
+   * @param title The toast's title
+   * @param message The toast's message
+   * @param toastDirective The toast container
+   * @param override The configuration overrides
+   */
   create(
     title: string,
     message: string,
@@ -68,6 +75,11 @@ export class ToastService {
     this.createToast(title, message, toastDirective);
   }
 
+  /**
+   * Removes a specific toast by index.
+   * @param toastIndex The toast's index
+   * @returns
+   */
   remove(toastIndex?: number): void {
     if (!toastIndex) {
       return;
@@ -83,6 +95,9 @@ export class ToastService {
     }
   }
 
+  /**
+   * Removes all active toasts.
+   */
   clear(): void {
     this.toasts.forEach((toast) => toast.component.destroy());
     this.toasts = [];
