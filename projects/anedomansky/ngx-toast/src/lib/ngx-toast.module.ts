@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { ModuleWithProviders, NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule, Optional,
+  SkipSelf, } from '@angular/core';
 
 import { ToastComponent } from './components/toast/toast.component';
 import { ToastContainerComponent } from './components/toast-container/toast-container.component';
