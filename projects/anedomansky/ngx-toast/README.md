@@ -68,7 +68,7 @@ export class AppModule { }
     <button class="btn btn--error" (click)="createErrorToast()">Error</button>
 </section>
 <ngx-toast-container [position]="position">
-    <ng-template toast></ng-template>
+    <ng-template ngxToast></ng-template>
 </ngx-toast-container>
 ```
 
@@ -116,6 +116,7 @@ export class AppComponent {
 | Name | Type | Default | Description |
 |-----------|---------|---------|---------|
 | position   | Position | 'top-left' | Specifies the position of the toast container.
+
 
 `ToastComponent` (`ngx-toast`):
 
