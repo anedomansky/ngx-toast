@@ -91,7 +91,7 @@ export class ToastService {
 
     if (toastToBeRemoved) {
       toastToBeRemoved.component.destroy();
-      this.toasts.splice(toastIndex, 1);
+      this.toasts = this.toasts.filter((toast) => toast.index !== toastIndex);
     }
   }
 
