@@ -1,6 +1,6 @@
 {
   "name": "@anedomansky/ngx-toast",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "An easy to use toast component.",
   "author": "Alexander Nedomansky <nedomanskya@outlook.com>",
   "license": "MIT",
