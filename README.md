@@ -1,5 +1,7 @@
 # ngx-toast
 
+[![npm version](https://badge.fury.io/js/@anedomansky%2Fngx-toast.svg)](https://badge.fury.io/js/@anedomansky%2Fngx-toast)
+
 An easy to use toast component.
 
 ## Features
